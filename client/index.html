@@ -10,12 +10,42 @@
 
 <script type="text/jsx">
   var App = React.createClass({
+    // getDefaultProps: function(){ Props: Meant to be passed in as static values...
+    //   return {
+    //     txt: 'this is a default prop',
+    //     cat: 0
+    //   }
+    // },
+    // propTypes:{
+    //   txt: React.PropTypes.string,
+    //   cat: React.PropTypes.number.isRequired //not specifying cat in getDefaultProps would create a warning in App component
+    // },
+    // 
+    // 
+    getInitialState: function(){
+      return {
+        txt: 'the state txt',
+        id: 0
+      };
+    },
+    update: function(e){
+      this.setState({txt: e.target.value});
+    },
     render:function(){
-      return <h1>Hello World</h1>
+      return (
+        <div>
+          <input type ="text" onChange={this.update}/>
+          <h1>{this.state.txt}</h1>
+        </div>
+        );
     }
   });
+  //Render needs to return only one element. "Must be wrapped in an enclosing tag."
 
-  React.render(<App />, document.body);
+
+  React.render(<App />, document.body); //can assign properties, but need interpolation: {this.props.txt}
+
+
 </script>
 
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>props.children</title>
+    <!-- see if this is required for the glyphicon -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+
+    <script src="http://fb.me/react-0.12.2.js"> </script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"> </script>
+
+    <style>
+      body{margin: 25px;}
+    </style>
+
+  </head>
+  <body>
+
+<!-- <script type="text/jsx" src ="testjsx.jsx"></script> -->
+
+<!-- Accessing child properties -->
+<script type="text/jsx">
+  var APP = 
+    React.createClass({
+      render: function(){
+        return (
+          <BButton><BHeart /> Button</BButton>//app renders a BButton, with 'Button' text inside of it
+          );
+      }
+    });
+
+  var BButton = 
+    React.createClass({
+      render: function(){
+        return <a className="btn btn-primary">{this.props.children}</a> //BButton renders itself, with its child (the text), interpolated
+      }
+    });
+
+  var BHeart =
+    React.createClass({
+      render: function(){
+        return <span className="glyphicon glyphicon-heart">OMG</span>
+      }
+    });
+
+  React.render(<APP/>, document.body);
+</script> 
+
+  </body>
+
+</html>
